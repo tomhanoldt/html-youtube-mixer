@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================= */
- 
+
 !function( $ ) {
 
 	var Slider = function(element, options) {
@@ -92,11 +92,11 @@
 			case 'round':
 				this.handle1.addClass('round');
 				this.handle2.addClass('round');
-				break
+				break;
 			case 'triangle':
 				this.handle1.addClass('triangle');
 				this.handle2.addClass('triangle');
-				break
+				break;
 		}
 
 		if (this.range) {
@@ -105,7 +105,7 @@
 		} else {
 			this.value = [ Math.max(this.min, Math.min(this.max, this.value))];
 			this.handle2.addClass('hide');
-			if (this.selection == 'after') {
+			if (this.selection === 'after') {
 				this.value[1] = this.max;
 			} else {
 				this.value[1] = this.min;
@@ -151,14 +151,14 @@
 
 		over: false,
 		inDrag: false,
-		
+
 		showTooltip: function(){
 			this.tooltip.addClass('in');
 			//var left = Math.round(this.percent*this.width);
 			//this.tooltip.css('left', left - this.tooltip.outerWidth()/2);
 			this.over = true;
 		},
-		
+
 		hideTooltip: function(){
 			if (this.inDrag === false) {
 				this.tooltip.removeClass('in');
@@ -169,7 +169,7 @@
 		layout: function(){
 			this.handle1Stype[this.stylePos] = this.percentage[0]+'%';
 			this.handle2Stype[this.stylePos] = this.percentage[1]+'%';
-			if (this.orientation == 'vertical') {
+			if (this.orientation === 'vertical') {
 				this.selectionElStyle.top = Math.min(this.percentage[0], this.percentage[1]) +'%';
 				this.selectionElStyle.height = Math.abs(this.percentage[0] - this.percentage[1]) +'%';
 			} else {
@@ -178,8 +178,8 @@
 			}
 			if (this.range) {
 				this.tooltipInner.text(
-					this.formater(this.value[0]) + 
-					' : ' + 
+					this.formater(this.value[0]) +
+					' : ' +
 					this.formater(this.value[1])
 				);
 				this.tooltip[0].style[this.stylePos] = this.size * (this.percentage[0] + (this.percentage[1] - this.percentage[0])/2)/100 - (this.orientation === 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
@@ -240,7 +240,7 @@
 		},
 
 		mousemove: function(ev) {
-			
+
 			// Touch: Get the original event:
 			if (this.touchCapable && ev.type === 'touchmove') {
 				ev = ev.originalEvent;
@@ -269,7 +269,7 @@
 			return false;
 		},
 
-		mouseup: function(ev) {
+		mouseup: function() {
 			if (this.touchCapable) {
 				// Touch: Bind touch events:
 				$(document).off({
@@ -284,10 +284,10 @@
 			}
 
 			this.inDrag = false;
-			if (this.over == false) {
+			if (this.over === false) {
 				this.hideTooltip();
 			}
-			this.element;
+
 			var val = this.calculateValue();
 			this.element
 				.trigger({
@@ -339,7 +339,7 @@
 			} else {
 				this.value = [ Math.max(this.min, Math.min(this.max, this.value))];
 				this.handle2.addClass('hide');
-				if (this.selection == 'after') {
+				if (this.selection === 'after') {
 					this.value[1] = this.max;
 				} else {
 					this.value[1] = this.min;
@@ -363,10 +363,10 @@
 			if (!data)  {
 				$this.data('slider', (data = new Slider(this, $.extend({}, $.fn.slider.defaults,options))));
 			}
-			if (typeof option == 'string') {
+			if (typeof option === 'string') {
 				data[option](val);
 			}
-		})
+		});
 	};
 
 	$.fn.slider.defaults = {
