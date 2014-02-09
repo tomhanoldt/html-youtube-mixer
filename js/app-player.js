@@ -52,10 +52,7 @@ var AppPlayer = function(id, config){
   $(document).on('click', '#search-'+id+'-result .record', function(){
     var video_id = $(this).data('id');
 
-    /*if(self.volume() > 0)
-      //TODO add to playlist
-    else*/
-      self.player.loadVideoById(video_id);
+    self.player.loadVideoById(video_id);
   });
 
   init();
