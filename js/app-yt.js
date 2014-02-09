@@ -8,25 +8,25 @@ YTHelper.SEARCH_TYPE_VIDEO = 'videos';
 
 
 YTHelper.search = function(type, query, callback){
-    $.get(YTHelper.API_VIDEO_URL+'/'+type,
-          {
-            'max-results':50,
-            alt: 'json',
-            lr: YTHelper.API_LANGUAGE,
-            q: query
-          },
-          function(data){
-            callback(data);
-          });
+  $.get(YTHelper.API_VIDEO_URL+'/'+type,
+        {
+          'max-results':50,
+          alt: 'json',
+          lr: YTHelper.API_LANGUAGE,
+          q: query
+        },
+        function(data){
+          callback(data);
+        });
 };
 
 YTHelper.suggest = function(q, response){
   $.getJSON(YTHelper.API_SUGGEST_URL,
             {
-              "hl":"en", // Language
-              "ds":"yt", // Restrict lookup to youtube
-              "q":q,     // query term
-              "client":"youtube" // force youtube style response, i.e. jsonp
+              hl     :YTHelper.API_LANGUAGE, // Language
+              ds     :"yt",                  // Restrict lookup to youtube
+              q      :q,                     // query term
+              client :"youtube"              // force youtube style response, i.e. jsonp
             },
             function(data) {
               response( $.map( data[1], function(item) {
