@@ -1,11 +1,10 @@
 var YTHelper = {};
 
-YTHelper.YT_URL  = 'http://www.youtube.com';
-YTHelper.API_VIDEO_URL = 'http://gdata.youtube.com/feeds/api';
-YTHelper.API_SUGGEST_URL = 'http://suggestqueries.google.com/complete/search?callback=?';
-YTHelper.API_LANGUAGE = 'de';
+YTHelper.YT_URL            = 'http://www.youtube.com';
+YTHelper.API_VIDEO_URL     = 'http://gdata.youtube.com/feeds/api';
+YTHelper.API_SUGGEST_URL   = 'http://suggestqueries.google.com/complete/search?callback=?';
+YTHelper.API_LANGUAGE      = 'de';
 YTHelper.SEARCH_TYPE_VIDEO = 'videos';
-
 
 YTHelper.search = function(type, query, callback){
   $.get(YTHelper.API_VIDEO_URL+'/'+type,
@@ -23,9 +22,9 @@ YTHelper.search = function(type, query, callback){
 YTHelper.suggest = function(q, response){
   $.getJSON(YTHelper.API_SUGGEST_URL,
             {
-              hl     :YTHelper.API_LANGUAGE, // Language
+              hl     :YTHelper.API_LANGUAGE,
               ds     :"yt",                  // Restrict lookup to youtube
-              q      :q,                     // query term
+              q      :q,
               client :"youtube"              // force youtube style response, i.e. jsonp
             },
             function(data) {
@@ -36,7 +35,7 @@ YTHelper.suggest = function(q, response){
                       };
                   }));
             }
-        );
+  );
 };
 
 YTHelper.YTRecord = function(result){

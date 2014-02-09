@@ -73,21 +73,6 @@ var AppPlayer = function(id, config){
       },
   });
 
-  //jquery ui qutocompleetion fix
-  var el = $(search_input_selector);
-  var _renderItemData = el.data("ui-autocomplete")._renderItemData;
-  el.data("ui-autocomplete")._renderItemData = function(ul, item) {
-
-      // If only one row is returned and ID = 0, then return 'no result' message
-      if (item.id == '0') {
-          return jQuery("<li></li>").data("item.autocomplete", item).data(
-                  "ui-autocomplete-item", item).append("<div class='no-result'>"
-                  + item.value + "</div>").appendTo(ul);
-      } else {
-          _renderItemData.apply(this, arguments)
-      }
-  }
-
   //clickable result rows
   $(document).on('click', search_result_selector+' .record', function(){
     var video_id = $(this).data('id');
