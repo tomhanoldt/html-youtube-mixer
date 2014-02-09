@@ -9,8 +9,6 @@ The simple problem of having many people in one room starting youtube videos...
   * download the zip and open index.html with a browser
 
 
-## Screenshot ##
-
 ![html-youtube-mixer](https://raw.github.com/monotom/html-youtube-mixer/master/img/screenshot.jpg)
 
 
