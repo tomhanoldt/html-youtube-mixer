@@ -28,14 +28,14 @@ YTHelper.suggest = function(q, response){
               "q":q,     // query term
               "client":"youtube" // force youtube style response, i.e. jsonp
             },
-            function(data, textStatus, request) {
+            function(data) {
               response( $.map( data[1], function(item) {
                       return {
                           label: item[0],
                           value: item[0]
-                      }
+                      };
                   }));
-              }
+            }
         );
 };
 
