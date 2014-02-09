@@ -17,3 +17,4 @@ The simple problem of having many people in one room starting youtube videos...
   * implement import/export of playlists
   * implement pagination of search results
   * implement language switch(youtube api queries)
+  * add player controll buttons for play, pause

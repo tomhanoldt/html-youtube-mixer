@@ -1,4 +1,6 @@
 
+/*global AppPlayerSearch, YT */
+
 var AppPlayer = function(id, config){
   config      = $.extend(AppPlayer.default_config, config);
   var self    = this;
