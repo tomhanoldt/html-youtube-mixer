@@ -8,6 +8,11 @@ body{
   color:#ccc;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #ccc;
+  font-family:'PT Sans';
+}
+
 /*bootstrap overrides*/
 .container{
   text-align: center;
@@ -20,11 +25,16 @@ body{
   margin: 10px 0;
 }
 
+.record:hover{
+  background-color:#888;
+}
+
 .record .thumbnail{
   background: transparent;
   border: none;
   border-radius: 0;
   padding: 0;
+  margin:0;
 }
 
 .record img{
@@ -37,6 +47,7 @@ body{
   bottom:0px;
   right:2px;
   background-color:#666;
+  border-top-left-radius: 3px;
 
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
@@ -45,16 +56,12 @@ body{
   opacity: 0.8;
 }
 
-.record:hover{
-  background-color:#888;
-}
-
 .record h4{
   color: #fff;
 }
 
 input.search{
-  width:400px;
+  min-width:300px;
 }
 
 .player{
