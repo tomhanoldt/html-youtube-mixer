@@ -39,6 +39,7 @@ var AppPlayer = function(id, config){
     return self.player.getPlayerState() === YT.PlayerState.PLAYING;
   };
 
+  //searchbutton
   $('#search-'+id+'-button').click(function(){
     App.search($('#search-'+id+'-input').val(), function(data){
       var str = '';
@@ -49,6 +50,16 @@ var AppPlayer = function(id, config){
     });
   });
 
+  //search enter
+  $('#search-'+id+'-input').on("keydown", function(e) {
+    if(e.which !== 13)
+      return ;
+
+    $('#search-'+id+'-button').trigger('click');
+  });
+
+
+  //clickable result rows
   $(document).on('click', '#search-'+id+'-result .record', function(){
     var video_id = $(this).data('id');
 
