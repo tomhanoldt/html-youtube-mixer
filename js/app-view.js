@@ -9,6 +9,11 @@ var AppView = {
                               '<h4>{title}</h4>'+
                               '<i>{date_fmt} - {views} Views</i>'+
                               '<div class="author">Auhoren: {authors} </div>'+
+                              '<div class="links">'+
+                                '<a class="add-to-player" href="#player1" data-id="{id}" >+player1</a><br/>'+
+                                '<a class="add-to-player" href="#player2" data-id="{id}" >+player2</a><br/>'+
+                                '<a href="{yt_url}" target="_blank">&gt;youtube</a>'+
+                              '</div>'+
                             '</div>'+
                           '</div>',
 
@@ -23,7 +28,7 @@ AppView.render_template =function(template, vars){
 
   for(var key in vars){
     if(vars.hasOwnProperty(key)){
-      str = str.replace('{'+key+'}', vars[key]);
+      str = str.replace(new RegExp('{'+key+'}', 'gm'), vars[key]);
     }
   }
 

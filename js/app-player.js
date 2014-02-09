@@ -39,6 +39,10 @@ var AppPlayer = function(id, config){
     return self.player.getPlayerState() === YT.PlayerState.PLAYING;
   };
 
+  this.play = function(id){
+    self.player.loadVideoById(id);
+  };
+
   //searchbutton
   $('#search-'+id+'-button').click(function(){
     App.search($('#search-'+id+'-input').val(), function(data){
@@ -62,8 +66,7 @@ var AppPlayer = function(id, config){
   //clickable result rows
   $(document).on('click', '#search-'+id+'-result .record', function(){
     var video_id = $(this).data('id');
-
-    self.player.loadVideoById(video_id);
+    self.play(video_id);
   });
 
   init();

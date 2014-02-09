@@ -92,13 +92,6 @@
 	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
 
 
-/* #Links
-================================================== */
-	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
-	a:hover, a:focus { color: #000; }
-	p a, p a:visited { line-height: inherit; }
-
-
 /* #Lists
 ================================================== */
 	ul, ol { margin-bottom: 20px; }

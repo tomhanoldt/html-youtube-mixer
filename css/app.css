@@ -13,12 +13,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family:'PT Sans';
 }
 
+a, a:visited { color: #666; text-decoration: none; outline: 0; }
+a:hover, a:focus { color: #ccc; text-decoration: none; }
+p a, p a:visited { line-height: inherit; }
+
 /*bootstrap overrides*/
 .container-fluid{
   text-align: center;
 }
-
-
 
 /*player*/
 .player{
@@ -62,6 +64,8 @@ h2{
   text-align: left;
   cursor:pointer;
   margin: 10px 0;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .record:hover{
@@ -98,4 +102,27 @@ h2{
 
 .search input{
   width:83.3333%;
+}
+
+.record a{
+  font-size:14px;
+}
+
+.record .links{
+  display: none;
+}
+
+.record:hover .links{
+  display: block;
+  position:absolute;
+  right:5px;
+  bottom:5px;
+  text-align:left;
+  border-radius: 5px;
+  background-color: #aaa;
+  padding:5px;
+}
+
+.record:hover .links a:hover{
+  color:#fff;
 }

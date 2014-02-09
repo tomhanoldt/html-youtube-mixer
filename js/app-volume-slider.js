@@ -23,7 +23,7 @@ var AppVolumeSlider = function(id){
 
   this.publish = function(value){
     volume_slider_state.html(Math.abs(value)+'%');
-    App.set_volume(value);
+    App.volume(value);
   };
 
   //set volume while dragging slider

@@ -1,6 +1,7 @@
 var YTHelper = {};
 
 YTHelper.API_URL = 'http://gdata.youtube.com/feeds/api';
+YTHelper.YT_URL  = 'http://www.youtube.com';
 YTHelper.API_LANGUAGE = 'de';
 YTHelper.SEARCH_TYPE_VIDEO = 'videos';
 
@@ -19,9 +20,10 @@ YTHelper.search = function(type, query, callback){
 };
 
 var YTRecord = function(result){
+  this.id         = result.id.$t.split('/').pop();
+  this.yt_url     = YTHelper.YT_URL+'/watch?v='+this.id;
   this.date       = new Date(result.published.$t);
   this.date_fmt   = this.date.getDay()+'.'+this.date.getMonth()+'.'+this.date.getFullYear();
-  this.id         = result.id.$t.split('/').pop();
   this.views      = (result.yt$statistics) ? result.yt$statistics.viewCount : '-';
   this.authors    = result.author;
   this.title      = result.title.$t;

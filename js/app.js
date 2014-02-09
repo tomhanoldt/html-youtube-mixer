@@ -4,6 +4,13 @@ jQuery(function($){
   $('body').append(
       $('<script/>').attr('src', "http://www.youtube.com/player_api"));
 
+  //init search result links
+  $(document).on('click', 'a.add-to-player', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var player = ($(this).attr('href').indexOf('player1') > -1) ? App.player1 : App.player2;
+    player.play($(this).data('id'))
+  });
 });
 
 //triggered after http://www.youtube.com/player_api loaded
@@ -14,8 +21,8 @@ function onYouTubePlayerAPIReady(){
 /*global AppPlayer, YTHelper, YTRecord, AppVolumeSlider */
 var App = {
   bootstrap: function(){
-    App.player1 = new AppPlayer('player1');
-    App.player2 = new AppPlayer('player2');
+    App.player1 = new AppPlayer('player1', {player: {on_ready: function(){ App.slider.value(-50); }}});
+    App.player2 = new AppPlayer('player2', {player: {on_ready: function(){ App.slider.value(-50); }}});
     App.slider  = new AppVolumeSlider('volume-slider');
   },
 
@@ -23,7 +30,7 @@ var App = {
     return App.player1.ready && App.player2.ready;
   },
 
-  set_volume: function(value){
+  volume: function(value){
     if(!App.is_ready()){
       return ;
     }
