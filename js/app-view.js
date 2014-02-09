@@ -1,7 +1,7 @@
 
 var AppView = {
   templates : {
-    'search.result.row' : '<div class="record row" data-id="{id}">'+
+    'search.result.row' : '<div class="record row" data-id="{id}" data-toggle="tooltip" data-placement="bottom" title="{info}">'+
                             '<div class="col-xs-3 thumbnail">'+
                               '<img src="{thumbnail}"><span class="duration">{duration_fmt}</span>'+
                             '</div>'+

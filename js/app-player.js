@@ -66,6 +66,10 @@ var AppPlayer = function(id, config){
     self.player.loadVideoById(video_id);
   });
 
+  $(document).on('mouseenter', '#search-'+id+'-result .record', function(){
+    $(this).tooltip().tooltip('show');
+  });
+
   init();
 }
 
