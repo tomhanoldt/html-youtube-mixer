@@ -6,7 +6,7 @@ jQuery(function($){
                         $('.volume-slider-state').html(e.value+'%');
                       });
 
-  //triggers App.bootsrap and ensures jQuery is loaded
+  //triggers App.bootstrap and ensures jQuery is loaded
   $('body').append(
       $('<script/>').attr('src', "http://www.youtube.com/player_api"));
 
@@ -14,11 +14,11 @@ jQuery(function($){
 
 //triggered after http://www.youtube.com/player_api loaded
 function onYouTubePlayerAPIReady(){
-  App.bootsrap();
+  App.bootstrap();
 }
 
 var App = {
-  bootsrap: function(){
+  bootstrap: function(){
     App.player1 = new AppPlayer('player1');
     App.player2 = new AppPlayer('player2');
   },
