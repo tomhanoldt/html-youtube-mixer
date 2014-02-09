@@ -30,5 +30,5 @@ var YTRecord = function(result){
   this.duration_seconds = parseInt(result.media$group.yt$duration.seconds, 10);
   var minutes = ''+Math.round(this.duration_seconds/60);
   var seconds = ''+(this.duration_seconds%60);
-  this.duration_fmt = (minutes.length == 1 ? '0'+minutes : minutes)+':'+(seconds.length == 1 ? '0'+seconds : seconds);
+  this.duration_fmt = (minutes.length === 1 ? '0'+minutes : minutes)+':'+(seconds.length === 1 ? '0'+seconds : seconds);
 };
