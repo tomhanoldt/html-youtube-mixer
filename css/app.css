@@ -14,9 +14,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*bootstrap overrides*/
-.container{
+.container-fluid{
   text-align: center;
 }
+
+
 
 /*player*/
 .player{
@@ -74,15 +76,11 @@ h2{
   margin:0;
 }
 
-.record img{
-  height:100px;
-}
-
 .record .duration{
   padding:0 4px;
   position:absolute;
   bottom:0px;
-  right:2px;
+  right:0px;
   background-color:#666;
   border-top-left-radius: 3px;
 
@@ -98,6 +96,6 @@ h2{
   font-size:18px;
 }
 
-input.search{
-  min-width:300px;
+.search input{
+  width:83.3333%;
 }

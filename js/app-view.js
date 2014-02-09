@@ -34,7 +34,7 @@ AppView.format_search_result = function(yt_record){
   var authors = '', author;
 
   for(var j = 0; j < yt_record.authors.length; j++){
-    author = yt_record.authors[j];
+    author  = yt_record.authors[j];
     authors+= AppView.render_template('search.result.row.author', {
                                                             'author_uri': author.uri.$t,
                                                             'author_name': author.name.$t

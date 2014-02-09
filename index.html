@@ -22,14 +22,14 @@
   <body>
 
     <!-- content begin -->
-    <div class="container">
+    <div class="container-fluid content">
 
       <div class="row">
         <div id="player1" class="col-xs-6 player"></div>
         <div id="player2" class="col-xs-6 player"></div>
       </div>
 
-      <div class="row">
+      <div class="col-xs-12">
         <div class="col-xs-12">
           <h2>Youtube-Mixer</h2>
           <input id="volume-slider" type="text" value=""
@@ -41,31 +41,41 @@
         <div id="volume-slider-state" class="col-xs-12">0%</div>
       </div>
 
-      <div class="row">
-        <div class="col-xs-6">
+      <div class="col-xs-12">
+        <div class="col-xs-6 search">
           <div>
-            <label>
-              <input class="search" id="search-player1-input" value='' type="text"/>
-              <button id="search-player1-button">Los!</button>
-            </label>
+            <div class="col-xs-12">
+              <input class="col-xs-10" id="search-player1-input" value='' type="text"/>
+              <div class="col-xs-2">
+                <button id="search-player1-button">Go!</button>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="col-xs-6 search">
+          <div>
+            <div class="col-xs-12">
+              <input class="col-xs-10" id="search-player2-input" value='' type="text"/>
+              <div class="col-xs-2">
+                <button id="search-player2-button">Go!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="col-xs-6 search">
           <div id="search-player1-result">
 
           </div>
         </div>
-        <div class="col-xs-6">
-          <div>
-            <label>
-              <input class="search" id="search-player2-input" value='' type="text"/>
-              <button id="search-player2-button">Los!</button>
-            </label>
-          </div>
+        <div class="col-xs-6 search">
           <div id="search-player2-result">
 
           </div>
         </div>
       </div>
-
     </div>
     <!-- content end -->
 
