@@ -14,5 +14,3 @@ The simple problem of having many people in one room starting youtube videos...
 
 ## TODOs ##
   * implement adhoc playlists without youtube api
-  * improve search(behave like youtube original search, auto completion)
-  * improve styling
