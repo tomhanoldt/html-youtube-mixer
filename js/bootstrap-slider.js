@@ -222,18 +222,21 @@
 			this.percentage[this.dragged] = percentage;
 			this.layout();
 
+			var on_events;
 			if (this.touchCapable) {
 				// Touch: Bind touch events:
-				$(document).on({
+				on_events = {
 					touchmove: $.proxy(this.mousemove, this),
 					touchend: $.proxy(this.mouseup, this)
-				});
+				};
 			} else {
-				$(document).on({
+				on_events = {
 					mousemove: $.proxy(this.mousemove, this),
 					mouseup: $.proxy(this.mouseup, this)
-				});
+				};
 			}
+
+			$(document).on(on_events);
 
 			this.inDrag = true;
 			var val = this.calculateValue();
