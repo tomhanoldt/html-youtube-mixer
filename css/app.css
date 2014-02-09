@@ -104,6 +104,11 @@ h2{
   width:83.3333%;
 }
 
+.search .search-button-col{
+  text-align: left;
+  padding-left:10px;
+}
+
 .record a{
   font-size:14px;
 }
