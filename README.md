@@ -1,11 +1,16 @@
 # Standalone Youtube-Mixer #
 The simple problem of having many people in one room starting youtube videos...
 
+
+
 ...make it a bit more ear friendly with this html standalone solution
 
 ...mix two youtube channels, and search result with a crossover fader
 
-...all is working out of the box
+...download and open index.html with a browser
+
+
+## TODO ##
 
 ![html-youtube-mixer](https://raw.github.com/monotom/html-youtube-mixer/master/img/screenshot.jpg)
 
