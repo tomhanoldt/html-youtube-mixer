@@ -17,7 +17,7 @@
  * limitations under the License.
  * ========================================================= */
 
-!function( $ ) {
+(function( $ ) {
 
 	var Slider = function(element, options) {
 		this.element = $(element);
@@ -396,4 +396,4 @@
 
 	$.fn.slider.Constructor = Slider;
 
-}( window.jQuery );
+}( window.jQuery ));
