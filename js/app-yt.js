@@ -39,7 +39,7 @@ YTHelper.suggest = function(q, response){
         );
 };
 
-var YTRecord = function(result){
+YTHelper.YTRecord = function(result){
   this.id         = result.id.$t.split('/').pop();
   this.yt_url     = YTHelper.YT_URL+'/watch?v='+this.id;
   this.date       = new Date(result.published.$t);

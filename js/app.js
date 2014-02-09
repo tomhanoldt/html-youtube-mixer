@@ -18,7 +18,7 @@ function onYouTubePlayerAPIReady(){
   App.bootstrap();
 }
 
-/*global AppPlayer, YTHelper, YTRecord, AppVolumeSlider */
+/*global AppPlayer, YTHelper, AppVolumeSlider */
 var App = {
   bootstrap: function(){
     App.player1 = new AppPlayer('player1', {player: {on_ready: function(){ App.slider.value(-50); }}});
@@ -59,7 +59,7 @@ var App = {
       }
 
       for(var i =0; i < data.feed.entry.length; i++ ){
-        data.results.push(new YTRecord(data.feed.entry[i]));
+        data.results.push(new YTHelper.YTRecord(data.feed.entry[i]));
       }
 
       callback(data);
