@@ -21,8 +21,9 @@ var AppView = {
 AppView.render_template =function(template, vars){
   var str = AppView.templates[template];
 
-  for(var key in vars)
+  for(var key in vars){
     str = str.replace('{'+key+'}', vars[key]);
+  }
 
   return str;
 };

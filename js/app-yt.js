@@ -18,7 +18,7 @@ YTHelper.search = function(type, query, callback){
           });
 };
 
-YTRecord = function(result){
+var YTRecord = function(result){
   this.date       = new Date(result.published.$t);
   this.date_fmt   = this.date.getDay()+'.'+this.date.getMonth()+'.'+this.date.getFullYear();
   this.id         = result.id.$t.split('/').pop();
@@ -27,7 +27,6 @@ YTRecord = function(result){
   this.title      = result.title.$t;
   this.thumbnail  = (result.media$group.media$thumbnail) ? result.media$group.media$thumbnail[0].url : '';
   this.info       = result.content.$t;
-  this.duration   = {};
   this.duration_seconds = parseInt(result.media$group.yt$duration.seconds);
   this.duration_fmt = Math.round(this.duration_seconds/60)+':'+(this.duration_seconds%60);
-}
+};

@@ -28,8 +28,9 @@ var App = {
   },
 
   set_volume: function(e){
-    if(!App.is_ready())
+    if(!App.is_ready()){
       return ;
+    }
 
     var slider_value = e.value, volume_player_1, volume_player_2;
 
@@ -50,11 +51,13 @@ var App = {
     YTHelper.search(YTHelper.SEARCH_TYPE_VIDEO, query, function(data){
       data.results = [];
 
-      if(!data.feed.entry)
+      if(!data.feed.entry){
         return callback(data);
+      }
 
-      for(var i =0; i < data.feed.entry.length; i++ )
+      for(var i =0; i < data.feed.entry.length; i++ ){
         data.results.push(new YTRecord(data.feed.entry[i]));
+      }
 
       callback(data);
     });
