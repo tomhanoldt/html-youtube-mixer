@@ -10,7 +10,7 @@ The simple problem of having many people in one room starting youtube videos...
 ...download and open index.html with a browser
 
 
-## TODO ##
+## Screenshot ##
 
 ![html-youtube-mixer](https://raw.github.com/monotom/html-youtube-mixer/master/img/screenshot.jpg)
 
