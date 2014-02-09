@@ -65,9 +65,7 @@ AppPlayer.default_config = {
   yt: {
     height: '390',
     width: '640',
-    playerVars: { listType:'playlist',
-            list: '<YOURPLAYLISTID>' }
-
+    playerVars: { }
   },
   player:{
     on_ready: null,
