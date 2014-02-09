@@ -3,11 +3,9 @@ The simple problem of having many people in one room starting youtube videos...
 
 
 
-...make it a bit more ear friendly with this html standalone solution
-
-...mix two youtube channels, and search result with a crossover fader
-
-...download and open index.html with a browser
+...make it a bit more ear friendly
+...mix two youtube videos and swicth them with a crossover fader
+...just download the zip and open index.html with a browser
 
 
 ## Screenshot ##
