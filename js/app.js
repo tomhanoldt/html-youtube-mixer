@@ -3,7 +3,7 @@ jQuery(function($){
   $('#volume-slider').slider()
                      .on('slide', App.set_volume)
                      .on('slide', function(e){
-                        $('.volume-slider-state').html(e.value+'%');
+                        $('.volume-slider-state').html(Math.abs(e.value)+'%');
                       });
 
   //triggers App.bootstrap and ensures jQuery is loaded
