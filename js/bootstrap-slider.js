@@ -166,15 +166,23 @@
 			this.over = false;
 		},
 
+		ext_percent: function(){
+			return Math.abs(this.percentage[0] - this.percentage[1]) +'%';
+		},
+
+		pos_percent: function(){
+			return Math.min(this.percentage[0], this.percentage[1]) +'%';
+		},
+
 		layout: function(){
 			this.handle1Stype[this.stylePos] = this.percentage[0]+'%';
 			this.handle2Stype[this.stylePos] = this.percentage[1]+'%';
 			if (this.orientation === 'vertical') {
-				this.selectionElStyle.top = Math.min(this.percentage[0], this.percentage[1]) +'%';
-				this.selectionElStyle.height = Math.abs(this.percentage[0] - this.percentage[1]) +'%';
+				this.selectionElStyle.top = this.pos_percent();
+				this.selectionElStyle.height = this.ext_percent();
 			} else {
-				this.selectionElStyle.left = Math.min(this.percentage[0], this.percentage[1]) +'%';
-				this.selectionElStyle.width = Math.abs(this.percentage[0] - this.percentage[1]) +'%';
+				this.selectionElStyle.left = this.pos_percent();
+				this.selectionElStyle.width = this.ext_percent();
 			}
 			if (this.range) {
 				this.tooltipInner.text(
