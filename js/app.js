@@ -17,6 +17,7 @@ function onYouTubePlayerAPIReady(){
   App.bootstrap();
 }
 
+/*global App, AppPlayer, YTHelper */
 var App = {
   bootstrap: function(){
     App.player1 = new AppPlayer('player1');
