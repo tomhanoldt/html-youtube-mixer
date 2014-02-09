@@ -27,6 +27,6 @@ var YTRecord = function(result){
   this.title      = result.title.$t;
   this.thumbnail  = (result.media$group.media$thumbnail) ? result.media$group.media$thumbnail[0].url : '';
   this.info       = result.content.$t;
-  this.duration_seconds = parseInt(result.media$group.yt$duration.seconds);
+  this.duration_seconds = parseInt(result.media$group.yt$duration.seconds, 10);
   this.duration_fmt = Math.round(this.duration_seconds/60)+':'+(this.duration_seconds%60);
 };

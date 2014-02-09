@@ -22,7 +22,9 @@ AppView.render_template =function(template, vars){
   var str = AppView.templates[template];
 
   for(var key in vars){
-    str = str.replace('{'+key+'}', vars[key]);
+    if(!vars.hasOwnProperty(key)){
+      str = str.replace('{'+key+'}', vars[key]);
+    }
   }
 
   return str;
