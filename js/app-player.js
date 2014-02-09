@@ -4,6 +4,10 @@ var AppPlayer = function(id, config){
   var self   = this;
   this.ready = false;
 
+  var search_button_selector = '#search-'+id+'-button';
+  var search_input_selector  = '#search-'+id+'-input';
+  var search_result_selector = '#search-'+id+'-result';
+
   var init = function(){
     self.player = new YT.Player(id, $.extend(config.yt, { events: {
                                                           'onReady': on_player_ready,
@@ -44,56 +48,48 @@ var AppPlayer = function(id, config){
   };
 
   //searchbutton
-  $('#search-'+id+'-button').click(function(){
-    App.search($('#search-'+id+'-input').val(), function(data){
+  $(search_button_selector).click(function(){
+    App.search($(search_input_selector).val(), function(data){
       var str = '';
       for(var i = 0; i < data.results.length; i++)
         str+=AppView.format_search_result(data.results[i]);
 
-      $('#search-'+id+'-result').html(str);
+      $(search_result_selector).html(str);
     });
   });
 
   //search enter
-  $('#search-'+id+'-input').on("keydown", function(e) {
+  $(search_input_selector).on("keydown", function(e) {
     if(e.which !== 13)
       return ;
 
-    $('#search-'+id+'-button').trigger('click');
+    $(search_button_selector).trigger('click');
   });
 
   //search autocompleetion
-  $('#search-'+id+'-input').autocomplete({
-        source: function(request, response) {
-            $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
-                {
-                  "hl":"en", // Language
-                  "ds":"yt", // Restrict lookup to youtube
-                  "jsonp":"suggestCallBack", // jsonp callback function name
-                  "q":request.term, // query term
-                  "client":"youtube" // force youtube style response, i.e. jsonp
-                }
-            );
-            suggestCallBack = function (data) {
+  $(search_input_selector).autocomplete({
+      source: function(request, response) {
+        YTHelper.suggest(request.term, response);
+      },
+  });
 
-                var suggestions = [];
-                $.each(data[1], function(key, val) {
-                    suggestions.push({"value":val[0]});
-                });
-                suggestions.length = 5; // prune suggestions list to only 5 items
+  //jquery ui qutocompleetion fix
+  var el = $(search_input_selector);
+  var _renderItemData = el.data("ui-autocomplete")._renderItemData;
+  el.data("ui-autocomplete")._renderItemData = function(ul, item) {
 
-                try{
-                  response(suggestions);
-                }
-                catch(e){
-                  //prevent jquery bug, when autocompleete source returns undefined
-                };
-            };
-        },
-    });
+      // If only one row is returned and ID = 0, then return 'no result' message
+      if (item.id == '0') {
+          return jQuery("<li></li>").data("item.autocomplete", item).data(
+                  "ui-autocomplete-item", item).append("<div class='no-result'>"
+                  + item.value + "</div>").appendTo(ul);
+      } else {
+          _renderItemData.apply(this, arguments)
+      }
+  }
 
   //clickable result rows
-  $(document).on('click', '#search-'+id+'-result .record', function(){
+  $(document).on('click', search_result_selector+' .record', function(){
     var video_id = $(this).data('id');
     self.play(video_id);
   });
