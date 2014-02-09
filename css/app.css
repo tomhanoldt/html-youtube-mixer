@@ -1,0 +1,45 @@
+
+/*generel*/
+body{
+  margin:0;
+  padding:0;
+  font-family:'PT Sans';
+  background:#666;
+  color:#ccc;
+}
+
+/*bootsrap overrides*/
+.container{
+  text-align: center;
+}
+
+.record{
+  text-align: left;
+  cursor:pointer;
+  margin: 10px 0;
+}
+
+.record img{
+  height:100px;
+}
+
+.record:hover{
+  background-color:#888;
+}
+
+.record h4{
+  color: #fff;
+}
+
+input.search{
+  width:400px;
+}
+
+.player{
+  padding:10px;
+  background-color: transparent;
+}
+
+.player.active{
+  background-color:#888;
+}
