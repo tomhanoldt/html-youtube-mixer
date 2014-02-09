@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================= */
-/*global Modernizr */
+/*ignore jslint start*/
 (function( $ ) {
 
 	var Slider = function(element, options) {
@@ -397,3 +397,4 @@
 	$.fn.slider.Constructor = Slider;
 
 }( window.jQuery ));
+/*ignore jslint end*/
