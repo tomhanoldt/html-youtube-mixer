@@ -9,7 +9,7 @@ jQuery(function($){
     e.preventDefault();
     e.stopPropagation();
     var player = ($(this).attr('href').indexOf('player1') > -1) ? App.player1 : App.player2;
-    player.play($(this).data('id'))
+    player.play($(this).data('id'));
   });
 });
 
