@@ -16,7 +16,7 @@ var App = {
   bootstrap: function(){
     App.player1 = new AppPlayer('player1');
     App.player2 = new AppPlayer('player2');
-    App.slider  = new AppVolumeSlider('#volume-slider', '.volume-slider-state');
+    App.slider  = new AppVolumeSlider('volume-slider');
   },
 
   is_ready: function(){

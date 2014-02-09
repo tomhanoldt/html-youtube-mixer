@@ -50,7 +50,7 @@ h2{
   background-image: linear-gradient(to bottom, #999, #aaa);
 }
 
-.volume-slider-state{
+#volume-slider-state{
   margin-top:10px;
 }
 
