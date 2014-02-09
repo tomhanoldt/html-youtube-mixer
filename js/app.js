@@ -1,11 +1,5 @@
 
 jQuery(function($){
-  $('#volume-slider').slider()
-                     .on('slide', App.set_volume)
-                     .on('slide', function(e){
-                        $('.volume-slider-state').html(Math.abs(e.value)+'%');
-                      });
-
   //triggers App.bootstrap and ensures jQuery is loaded
   $('body').append(
       $('<script/>').attr('src', "http://www.youtube.com/player_api"));
@@ -17,31 +11,32 @@ function onYouTubePlayerAPIReady(){
   App.bootstrap();
 }
 
-/*global AppPlayer, YTHelper, YTRecord */
+/*global AppPlayer, YTHelper, YTRecord, AppVolumeSlider */
 var App = {
   bootstrap: function(){
     App.player1 = new AppPlayer('player1');
     App.player2 = new AppPlayer('player2');
+    App.slider  = new AppVolumeSlider('#volume-slider', '.volume-slider-state');
   },
 
   is_ready: function(){
     return App.player1.ready && App.player2.ready;
   },
 
-  set_volume: function(e){
+  set_volume: function(value){
     if(!App.is_ready()){
       return ;
     }
 
-    var slider_value = e.value, volume_player_1, volume_player_2;
+    var volume_player_1, volume_player_2;
 
-    if(slider_value < 0){//means more on player 1
-      volume_player_1 = Math.abs(slider_value);
+    if(value < 0){//means more on player 1
+      volume_player_1 = Math.abs(value);
       volume_player_2 = 0;
     }
     else{//more on player 2
       volume_player_1 = 0;
-      volume_player_2 = slider_value;
+      volume_player_2 = value;
     }
 
     App.player1.volume(volume_player_1);
