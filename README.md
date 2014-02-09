@@ -13,6 +13,7 @@ The simple problem of having many people in one room starting youtube videos...
 
 
 ## TODOs ##
-  * implement adhoc playlists without youtube api, import/export playlists
-  * refactor search, move away from player to app-search.js
+  * implement adhoc playlists without youtube api
+  * implement import/export of playlists
   * implement pagination of search results
+  * implement language switch(youtube api queries)
