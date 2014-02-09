@@ -1,4 +1,6 @@
 # Standalone Youtube-Mixer #
+[![Code Climate](https://codeclimate.com/github/monotom/html-youtube-mixer.png)](https://codeclimate.com/github/monotom/html-youtube-mixer)
+
 The simple problem of having many people in one room starting youtube videos...
 
 
