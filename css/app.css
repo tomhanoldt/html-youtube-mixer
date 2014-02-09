@@ -101,6 +101,3 @@ h2{
 input.search{
   min-width:300px;
 }
-
-.tooltip > .tooltip-inner { min-width:280px; background-color: #888; }
-.tooltip > .tooltip-arrow {border-bottom-color: #888; }
