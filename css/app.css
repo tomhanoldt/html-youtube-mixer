@@ -14,13 +14,35 @@ body{
 }
 
 .record{
+  position: relative;
   text-align: left;
   cursor:pointer;
   margin: 10px 0;
 }
 
+.record .thumbnail{
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
 .record img{
   height:100px;
+}
+
+.record .duration{
+  padding:0 4px;
+  position:absolute;
+  bottom:0px;
+  right:2px;
+  background-color:#666;
+
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
 }
 
 .record:hover{
