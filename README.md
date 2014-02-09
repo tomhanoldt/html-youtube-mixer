@@ -24,7 +24,7 @@ The simple problem of having many people in one room starting youtube videos...
 
 ## Screenshots ##
 
-![html-youtube-mixer](https://github.com/monotom/html-youtube-player/blob/master/img/screenshot.jpg)
+![html-youtube-mixer](https://raw.github.com/monotom/html-youtube-mixer/master/img/screenshot.jpg)
 ## Changelog ##
 # 1.0.0 #
   * 2 youtube player
