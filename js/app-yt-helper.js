@@ -23,7 +23,7 @@ YTHelper.search = function(type, query, callback){
       console.log(intern_data);
       callback(intern_data);
     }
-  }
+  };
 
   for(var i=0; i < YTHelper.API_LANGUAGE.length; i++){
     $.get(YTHelper.API_VIDEO_URL+'/'+type,
@@ -34,9 +34,7 @@ YTHelper.search = function(type, query, callback){
             lr: YTHelper.API_LANGUAGE[i],
             q: query
           },
-          function(data){
-            intern_callback(data);
-          });
+          intern_callback);
   }
 };
 

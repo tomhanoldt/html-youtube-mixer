@@ -16,10 +16,12 @@ var AppPlayer = function(id, config){
   };
 
   this.play = function(id){
-    if(self.ready)
+    if(self.ready){
       this.player.loadVideoById(id);
-    else
+    }
+    else{
       alert('player not ready ...maybe its a bug ...or a feature?');
+    }
   };
 
   this.is_playing = function (){
@@ -30,10 +32,12 @@ var AppPlayer = function(id, config){
     if(level === null)
       return self.player.getVolume();
 
-    if(level > 0)
+    if(level > 0){
       $('#'+id).addClass('active');
-    else
+    }
+    else{
       $('#'+id).removeClass('active');
+    }
 
     self.player.setVolume(level);
   };
@@ -41,13 +45,15 @@ var AppPlayer = function(id, config){
   var on_player_ready = function(e){
     self.ready = true;
 
-    if(typeof config.player.on_ready == 'function')
+    if(typeof config.player.on_ready === 'function'){
       config.player.on_ready(e);
+    }
   };
 
   var on_state_change = function(e){
-    if(typeof config.player.on_change == 'function')
+    if(typeof config.player.on_change === 'function'){
       config.player.on_change(e);
+    }
   };
 
   init();
