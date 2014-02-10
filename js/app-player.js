@@ -56,7 +56,7 @@ var AppPlayer = function(id, config){
 AppPlayer.default_config = {
   yt: {
     height: '390',
-    width: '640'
+    width: '640',
     playerVars: { }
   },
   player:{
