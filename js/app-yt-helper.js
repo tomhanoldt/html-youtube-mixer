@@ -3,26 +3,47 @@ var YTHelper = {};
 YTHelper.YT_URL            = 'http://www.youtube.com';
 YTHelper.API_VIDEO_URL     = 'http://gdata.youtube.com/feeds/api';
 YTHelper.API_SUGGEST_URL   = 'http://suggestqueries.google.com/complete/search?callback=?';
-YTHelper.API_LANGUAGE      = 'de';
+YTHelper.API_LANGUAGE      = ['en', 'de'];
 YTHelper.SEARCH_TYPE_VIDEO = 'videos';
 
 YTHelper.search = function(type, query, callback){
-  $.get(YTHelper.API_VIDEO_URL+'/'+type,
-        {
-          'max-results':50,
-          alt: 'json',
-          lr: YTHelper.API_LANGUAGE,
-          q: query
-        },
-        function(data){
-          callback(data);
-        });
+  var callbacked = 0;
+  var intern_data;
+
+  var intern_callback = function(data){
+    callbacked++;
+    if(callbacked === 1){
+      intern_data = data;
+    }
+    else{
+      intern_data.feed.entry = intern_data.feed.entry.concat(data.feed.entry);
+    }
+
+    if(callbacked === YTHelper.API_LANGUAGE.length){
+      console.log(intern_data);
+      callback(intern_data);
+    }
+  }
+
+  for(var i=0; i < YTHelper.API_LANGUAGE.length; i++){
+    $.get(YTHelper.API_VIDEO_URL+'/'+type,
+          {
+            'max-results':50,
+            'orderby': 'relevance',
+            alt: 'json',
+            lr: YTHelper.API_LANGUAGE[i],
+            q: query
+          },
+          function(data){
+            intern_callback(data);
+          });
+  }
 };
 
 YTHelper.suggest = function(q, response){
   $.getJSON(YTHelper.API_SUGGEST_URL,
             {
-              hl     :YTHelper.API_LANGUAGE,
+              hl     :YTHelper.API_LANGUAGE[0],
               ds     :"yt",                  // Restrict lookup to youtube
               q      :q,
               client :"youtube"              // force youtube style response, i.e. jsonp
