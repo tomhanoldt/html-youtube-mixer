@@ -16,14 +16,17 @@ var AppPlayer = function(id, config){
   };
 
   this.play = function(id){
-    self.player.loadVideoById(id);
+    if(self.ready)
+      this.player.loadVideoById(id);
+    else
+      alert('player not ready, if you are using chrome, there is a bug, please use firefox');
   };
 
   this.is_playing = function (){
     return self.player.getPlayerState() === YT.PlayerState.PLAYING;
   };
 
-  this.volume = function(level = null){
+  this.volume = function(level){
     if(level === null)
       return self.player.getVolume();
 
@@ -37,6 +40,7 @@ var AppPlayer = function(id, config){
 
   var on_player_ready = function(e){
     self.ready = true;
+    console.log('player ready');
 
     if(typeof config.player.on_ready == 'function')
       config.player.on_ready(e);
