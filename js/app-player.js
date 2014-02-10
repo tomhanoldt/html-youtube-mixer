@@ -19,7 +19,7 @@ var AppPlayer = function(id, config){
     if(self.ready)
       this.player.loadVideoById(id);
     else
-      alert('player not ready, if you are using chrome, there is a bug, please use firefox');
+      alert('player not ready ...maybe its a bug ...or a feature?');
   };
 
   this.is_playing = function (){
@@ -40,7 +40,6 @@ var AppPlayer = function(id, config){
 
   var on_player_ready = function(e){
     self.ready = true;
-    console.log('player ready');
 
     if(typeof config.player.on_ready == 'function')
       config.player.on_ready(e);
@@ -57,7 +56,7 @@ var AppPlayer = function(id, config){
 AppPlayer.default_config = {
   yt: {
     height: '390',
-    width: '640',
+    width: '640'
     playerVars: { }
   },
   player:{
