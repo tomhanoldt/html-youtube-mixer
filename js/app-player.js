@@ -1,36 +1,34 @@
 
-/*global AppPlayerSearch, YT */
+/*global App, AppPlayerSearch, JavaPlayer, YoutubePlayer */
 
 var AppPlayer = function(id, config){
   config      = $.extend(AppPlayer.default_config, config);
-  var self    = this;
-  this.ready  = false;
-  this.id     = id;
 
-  var init = function(){
-    self.player = new YT.Player(id, $.extend(config.yt, { events: {
-                                                          'onReady': on_player_ready,
-                                                          'onStateChange': on_state_change
-                                                      }}));
-    self.search = new AppPlayerSearch(self);
-  };
+  var self    = this;
+
+  self.id     = id;
+
+  self.player = App.running_java_mixer ? new JavaPlayer(id, config) : new YoutubePlayer(id, config);
+
+  self.search = new AppPlayerSearch(self);
+
+
+  this.ready = function(){
+    return self.player.ready;
+  }
 
   this.play = function(id){
-    if(self.ready){
-      this.player.loadVideoById(id);
+    if(self.ready()){
+      self.player.play(id);
     }
     else{
       alert('player not ready ...maybe its a bug ...or a feature?');
     }
   };
 
-  this.is_playing = function (){
-    return self.player.getPlayerState() === YT.PlayerState.PLAYING;
-  };
-
   this.volume = function(level){
     if(level === null)
-      return self.player.getVolume();
+      return self.player.volume();
 
     if(level > 0){
       $('#'+id).addClass('active');
@@ -39,34 +37,18 @@ var AppPlayer = function(id, config){
       $('#'+id).removeClass('active');
     }
 
-    self.player.setVolume(level);
+    self.player.volume(level);
   };
-
-  var on_player_ready = function(e){
-    self.ready = true;
-
-    if(typeof config.player.on_ready === 'function'){
-      config.player.on_ready(e);
-    }
-  };
-
-  var on_state_change = function(e){
-    if(typeof config.player.on_change === 'function'){
-      config.player.on_change(e);
-    }
-  };
-
-  init();
 };
 
 AppPlayer.default_config = {
+  player:{
+      on_ready: null,
+      on_change: null
+    },
   yt: {
     height: '390',
     width: '640',
     playerVars: { }
-  },
-  player:{
-    on_ready: null,
-    on_change: null
   }
 };

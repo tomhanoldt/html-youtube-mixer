@@ -1,8 +1,4 @@
-
 jQuery(function($){
-  //triggers App.bootstrap and ensures jQuery is loaded
-  $('body').append(
-      $('<script/>').attr('src', "http://www.youtube.com/player_api"));
 
   //init search result links
   $(document).on('click', 'a.add-to-player', function(e){
@@ -11,23 +7,23 @@ jQuery(function($){
     var player = ($(this).attr('href').indexOf('player1') > -1) ? App.player1 : App.player2;
     player.play($(this).data('id'));
   });
+
+  App.bootstrap();
 });
 
-//triggered after http://www.youtube.com/player_api loaded
-function onYouTubePlayerAPIReady(){
-  App.bootstrap();
-}
+
 
 /*global AppPlayer, YTHelper, AppVolumeSlider */
 var App = {
   bootstrap: function(){
+    App.running_java_mixer = (window.location.toString().indexOf('runjplayer=1') > -1);
     App.player1 = new AppPlayer('player1', {player: {on_ready: function(){ App.slider.value(-50); }}});
     App.player2 = new AppPlayer('player2', {player: {on_ready: function(){ App.slider.value(-50); }}});
     App.slider  = new AppVolumeSlider('volume-slider');
   },
 
   is_ready: function(){
-    return App.player1.ready && App.player2.ready;
+    return App.player1.ready() && App.player2.ready();
   },
 
   volume: function(value){
